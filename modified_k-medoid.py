@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # <nbformat>3.0</nbformat>
-# <codecell>
+
 
 import numpy as np
 import csv as csv
@@ -22,22 +22,12 @@ for i in range(1,len(data[0,:])):
     
 states,len(states)
 
-# <codecell>
-
 nk=5
-
-# <codecell>
-
 
 ini=[]     # ini will be storing the medoid centers during the whole time the program runs, and finally will give the optimum medoids.
 import random
 #randomly iniatilize the medoid centres
 # I have chosen nk=5, as in the no. of clusters we are going to have
-
-# <codecell>
-
-
-# <codecell>
 
 def findpos(ini,data):
     index=[]
@@ -47,7 +37,6 @@ def findpos(ini,data):
                 index.append(i)
     return index
 
-# <codecell>
 
 pos=findpos(ini,data)
 dis=[]
@@ -63,27 +52,16 @@ for k in range(0,len(ini)):
     dis.append(mdis)
         
 
-# <codecell>
+
 
 print ':ini: is the array storing the initial medoid cluster centres'
 print ':dis: is the array storing the distances of each state from the medoid, which will help in determining the cost function'
-
-# <codecell>
 
 # STEP1
 # medoid have been initalized || and distances of each cluster point from the cluster medoids have been stored (unnecesary) ||
 # STEP 2
 # Association of non-medoid points to medoid points , i.e every point chooses the nearest medoid
 
-# <codecell>
-
-
-
-# <codecell>
-
-
-
-# <codecell>
 
 # function for associating the various nom-medoid points to the medoids, given a current set of medoids as input
 
@@ -106,19 +84,11 @@ def assoc(pos): # takes the position array of the medoids as the input to return
     return association
                 
 
-# <codecell>
-
-
-
 # Initial assciation of each non- medoid point to medoid centers has been done
-
-# <codecell>
 
  # note the first index is the same as the index of all the states in order in the data.csv file
 
 # so we can store the indexes of the required points for further use
-
-# <codecell>
 
 # function,forming the array containing the clusters, ini= medoids, association is the array input containing the asso. of each medoid
 def clustering(ini,association):
@@ -132,19 +102,13 @@ def clustering(ini,association):
         clus.append(buff) 
     return clus
 
-# <codecell>
+
 
 # initial clustering done , now we start iterating so as to get the least cost solution
 # algorithm step
 # for each medoid
     #for each non-medoid
     #swap the datapoints to calculate the cost= sum of distances of the non-medoid points from the medoid center in each cluster
-
-# <codecell>
-
-
-
-# <codecell>
 
 # now needed is the COST FUNCTION: calculates cost for a given input cluster 
 #note that here the non-medoid array argument passed in the cost function contains the medoid as well, so we need to do a check
